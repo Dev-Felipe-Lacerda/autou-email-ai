@@ -1,0 +1,160 @@
+/* Loading overlay (full-screen modal while analyzing) */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  background: rgba(15, 23, 42, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+  text-align: center;
+  min-width: 260px;
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgba(52, 211, 153, 0.25);
+  border-top-color: rgb(16, 185, 129);
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Generic card styles + hover transition */
+.card {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.12s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+}
+
+/* Dark mode base (enabled via html.dark) */
+html.dark body {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* Dark mode: header and footer containers */
+html.dark header,
+html.dark footer {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-color: #1f2937;
+}
+
+/* Dark mode: card container */
+html.dark .card {
+  background-color: #020617;
+  border-color: #1f2937;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
+}
+
+/* Dark mode: neutral text colors */
+html.dark .text-slate-500,
+html.dark .text-slate-600,
+html.dark .text-slate-700,
+html.dark .text-slate-800,
+html.dark .text-slate-900 {
+  color: #e5e7eb !important;
+}
+
+/* Dark mode: neutral backgrounds */
+html.dark .bg-white,
+html.dark .bg-slate-50,
+html.dark .bg-slate-100 {
+  background-color: #020617 !important;
+}
+
+/* Dark mode: neutral borders */
+html.dark .border-slate-200,
+html.dark .border-slate-300 {
+  border-color: #1f2937 !important;
+}
+
+/* Dark mode: secondary button */
+html.dark .btn-secondary {
+  border-color: #4b5563;
+  color: #e5e7eb;
+}
+
+html.dark .btn-secondary:hover {
+  background-color: #111827;
+}
+
+/* Dark mode: loading card */
+html.dark .loading-card {
+  background: #020617;
+  border-color: #4b5563;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+}
+
+html.dark .loading-card p {
+  color: #e5e7eb;
+}
+
+/* Segmented control (text/file input toggle) */
+.segmented-container {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 9999px;
+  border-width: 1px;
+  overflow: hidden;
+}
+
+/* Sliding thumb inside segmented control */
+.segmented-thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.25);
+  transform: translateX(0%);
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Thumb position when "file" mode is active */
+.segmented-thumb-right {
+  transform: translateX(100%);
+}
+
+/* Dark mode: segmented control container */
+html.dark .segmented-container {
+  background-color: #020617;
+  border-color: #1f2937;
+}
+
+/* Dark mode: segmented control thumb */
+html.dark .segmented-thumb {
+  background-color: #1f2937;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+}
